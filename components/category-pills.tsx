@@ -15,12 +15,16 @@ export function CategoryPills({ activeCategory, onCategoryChange }: CategoryPill
         <button
           key={category.id}
           onClick={() => onCategoryChange(category.id)}
-          className={`px-3 py-1.5 text-[13px] rounded-full transition-colors ${
+          className={`px-3 py-1.5 text-[13px] rounded-full transition-colors font-medium ${
             activeCategory === category.id
-              ? "bg-white text-black font-medium shadow-sm"
+              ? "shadow-sm"
               : "text-secondary hover:bg-border-light"
           }`}
-          style={activeCategory !== category.id ? { background: 'var(--bg-pill)' } : undefined}
+          style={
+            activeCategory === category.id
+              ? { background: 'var(--text-primary)', color: 'var(--bg-page)' }
+              : { background: 'var(--bg-pill)' }
+          }
         >
           {category.label}
         </button>
