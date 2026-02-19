@@ -16,15 +16,17 @@ export function ResourceRow({ resource, index }: ResourceRowProps) {
       href={resource.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center gap-3.5 py-3 transition-colors duration-150 hover:bg-bg-hover animate-fade-up"
+      className="group flex items-center gap-2.5 py-3 transition-colors duration-150 hover:bg-bg-hover animate-fade-up"
       style={{ animationDelay: `${animationDelay}s` }}
     >
-      <OGThumbnail
-        ogImageUrl={resource.og_image_url}
-        faviconUrl={resource.favicon_url}
-        title={resource.title}
-        domain={resource.domain}
-      />
+      <div className="-ml-3 -mr-1">
+        <OGThumbnail
+          ogImageUrl={resource.og_image_url}
+          faviconUrl={resource.favicon_url}
+          title={resource.title}
+          domain={resource.domain}
+        />
+      </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-baseline gap-2">
           <span className="text-sm text-primary truncate">{resource.title}</span>

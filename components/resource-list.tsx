@@ -11,21 +11,14 @@ interface ResourceListProps {
 export function ResourceList({ resources, searchQuery }: ResourceListProps) {
   return (
     <div>
-      {/* Table header */}
-      <div className="flex items-center justify-between py-2 border-b border-border-faint mb-2">
-        {searchQuery ? (
+      {/* Search results header */}
+      {searchQuery && (
+        <div className="py-2 mb-2">
           <span className="text-xs font-serif italic text-secondary">
             {resources.length} result{resources.length !== 1 ? "s" : ""} for &ldquo;{searchQuery}&rdquo;
           </span>
-        ) : (
-          <span className="text-[11px] uppercase tracking-[0.06em] text-muted">
-            Title
-          </span>
-        )}
-        <span className="text-[11px] uppercase tracking-[0.06em] text-muted">
-          Added
-        </span>
-      </div>
+        </div>
+      )}
 
       {/* Resource rows */}
       <div className="divide-y divide-border-faint">

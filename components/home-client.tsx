@@ -96,7 +96,7 @@ export function HomeClient({ initialResources }: HomeClientProps) {
       {/* Main content - narrower, centered */}
       <div className="max-w-xl mx-auto px-6">
         {/* Category pills */}
-        <div className="mt-6 mb-pills-bottom">
+        <div className="mt-6 mb-[30px]">
           <CategoryPills activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
         </div>
 
