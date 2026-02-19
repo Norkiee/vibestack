@@ -84,43 +84,43 @@ export function HomeClient({ initialResources }: HomeClientProps) {
   }, [activeCategory, filterByCategory]);
 
   return (
-    <div className="w-full max-w-page mx-auto px-4">
-      {/* Header */}
-      <header className="flex items-center justify-between pt-header-top pb-6">
+    <div className="w-full">
+      {/* Header - wider container */}
+      <header className="px-6 pt-header-top pb-6">
         <div className="flex items-center gap-1.5">
-          <span className="text-base font-medium tracking-[-0.02em] text-primary">vibestack</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-accent-green" />
+          <span className="text-xl font-medium tracking-[-0.02em] text-primary">vibestack</span>
+          <span className="w-2 h-2 rounded-full bg-accent-green" />
         </div>
-        <span className="text-sm font-serif italic text-secondary">resources for builders</span>
       </header>
 
-      {/* Search */}
-      <div className="mt-search-top mb-search-bottom">
-        <SearchBar
-          onSearch={handleSearch}
-          onClear={handleClearSearch}
-          isSearching={isSearching}
-          searchQuery={searchQuery}
+      {/* Main content - narrower, centered */}
+      <div className="max-w-xl mx-auto px-6">
+        {/* Category pills */}
+        <div className="mt-6 mb-pills-bottom">
+          <CategoryPills activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
+        </div>
+
+        {/* Resource list */}
+        <ResourceList
+          resources={filteredResources}
+          searchQuery={searchQuery || undefined}
         />
+
+        {/* Footer */}
+        <footer className="mt-footer-top pb-24 border-t border-border-faint pt-6 text-center">
+          <span className="text-xs font-serif italic text-ghost">
+            curated for the vibe builder community
+          </span>
+        </footer>
       </div>
 
-      {/* Category pills */}
-      <div className="mb-pills-bottom">
-        <CategoryPills activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
-      </div>
-
-      {/* Resource list */}
-      <ResourceList
-        resources={filteredResources}
-        searchQuery={searchQuery || undefined}
+      {/* Floating Search Bar */}
+      <SearchBar
+        onSearch={handleSearch}
+        onClear={handleClearSearch}
+        isSearching={isSearching}
+        searchQuery={searchQuery}
       />
-
-      {/* Footer */}
-      <footer className="mt-footer-top pb-8 border-t border-border-faint pt-6 text-center">
-        <span className="text-xs font-serif italic text-ghost">
-          curated for the vibe builder community
-        </span>
-      </footer>
     </div>
   );
 }

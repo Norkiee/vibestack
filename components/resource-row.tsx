@@ -8,11 +8,6 @@ interface ResourceRowProps {
   index: number;
 }
 
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-}
-
 export function ResourceRow({ resource, index }: ResourceRowProps) {
   const animationDelay = Math.min(index * 0.03, 0.35);
 
@@ -21,7 +16,7 @@ export function ResourceRow({ resource, index }: ResourceRowProps) {
       href={resource.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-3.5 py-3 px-2 -mx-2 rounded-md transition-colors duration-150 hover:bg-bg-hover animate-fade-up"
+      className="group flex items-center gap-3.5 py-3 transition-colors duration-150 hover:bg-bg-hover animate-fade-up"
       style={{ animationDelay: `${animationDelay}s` }}
     >
       <OGThumbnail
@@ -37,8 +32,21 @@ export function ResourceRow({ resource, index }: ResourceRowProps) {
         </div>
         <p className="text-xs text-muted truncate mt-0.5">{resource.description}</p>
       </div>
-      <span className="text-xs text-faint flex-shrink-0">
-        {formatDate(resource.created_at)}
+      <span className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-muted">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          <polyline points="15 3 21 3 21 9" />
+          <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
       </span>
     </a>
   );

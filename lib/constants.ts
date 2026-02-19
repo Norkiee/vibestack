@@ -7,5 +7,5 @@ export const CATEGORIES: { id: CategoryFilter; label: string }[] = [
   { id: "slack", label: "Slack" },
   { id: "building", label: "Building" },
   { id: "ai-marketing", label: "AI Marketing" },
-  { id: "seo", label: "SEO & Marketing" },
+  { id: "seo", label: "SEO" },
 ] as const;

@@ -9,6 +9,25 @@ interface SearchBarProps {
   searchQuery: string;
 }
 
+function SearchIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#888888"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
 export function SearchBar({ onSearch, onClear, isSearching, searchQuery }: SearchBarProps) {
   const [inputValue, setInputValue] = useState(searchQuery);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -27,44 +46,46 @@ export function SearchBar({ onSearch, onClear, isSearching, searchQuery }: Searc
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative">
-      <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center">
-        <kbd className="px-1.5 py-0.5 text-[10px] font-medium text-muted bg-bg-pill border border-border-light rounded">
-          /
-        </kbd>
-      </div>
-      <input
-        ref={inputRef}
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder='Try "how do I market with Claude" or "best place to launch"...'
-        className="w-full py-3 pl-10 pr-10 text-sm text-primary placeholder:text-muted bg-white border border-border rounded-lg focus:outline-none focus:border-secondary transition-colors"
-      />
-      {isSearching ? (
-        <div className="absolute right-3 top-1/2 -translate-y-1/2">
-          <div className="w-4 h-4 border-2 border-muted border-t-transparent rounded-full animate-spin" />
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-md px-4 z-50">
+      <form onSubmit={handleSubmit}>
+        <div className="relative flex items-center bg-white/50 backdrop-blur-xl border border-[#f5f5f5] rounded-full shadow-lg shadow-black/5">
+          <span className="pl-4 flex items-center">
+            <SearchIcon />
+          </span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder='Try "marketing with Claude"...'
+            className="flex-1 py-2.5 pl-3 pr-10 text-sm text-primary placeholder:text-muted/50 bg-transparent focus:outline-none"
+          />
+          {isSearching ? (
+            <div className="absolute right-4 top-1/2 -translate-y-1/2">
+              <div className="w-4 h-4 border-2 border-muted border-t-transparent rounded-full animate-spin" />
+            </div>
+          ) : searchQuery ? (
+            <button
+              type="button"
+              onClick={handleClear}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-muted hover:text-secondary transition-colors"
+              aria-label="Clear search"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              >
+                <path d="M4 4l8 8M12 4l-8 8" />
+              </svg>
+            </button>
+          ) : null}
         </div>
-      ) : searchQuery ? (
-        <button
-          type="button"
-          onClick={handleClear}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-secondary transition-colors"
-          aria-label="Clear search"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          >
-            <path d="M4 4l8 8M12 4l-8 8" />
-          </svg>
-        </button>
-      ) : null}
-    </form>
+      </form>
+    </div>
   );
 }

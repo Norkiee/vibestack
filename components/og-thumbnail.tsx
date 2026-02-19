@@ -19,7 +19,7 @@ export function OGThumbnail({ ogImageUrl, faviconUrl, title, domain }: OGThumbna
   // Show OG image if available and no error
   if (ogImageUrl && !imageError) {
     return (
-      <div className="relative w-14 h-10 rounded-md border border-border-light bg-bg-pill overflow-hidden flex-shrink-0">
+      <div className="relative w-14 h-10 rounded-md overflow-hidden flex-shrink-0">
         {loading && (
           <div className="absolute inset-0 animate-shimmer" />
         )}
@@ -39,9 +39,9 @@ export function OGThumbnail({ ogImageUrl, faviconUrl, title, domain }: OGThumbna
     );
   }
 
-  // Fallback: centered favicon on neutral background
+  // Fallback: just the favicon
   return (
-    <div className="w-14 h-10 rounded-md border border-border-light bg-bg-pill flex items-center justify-center flex-shrink-0">
+    <div className="w-14 h-10 flex items-center justify-center flex-shrink-0">
       <Image
         src={fallbackFavicon}
         alt={`${domain} favicon`}
