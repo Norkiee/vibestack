@@ -35,7 +35,7 @@ export default async function Home() {
   const resources = await getResources();
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen">
       <HomeClient initialResources={resources} />
     </main>
   );

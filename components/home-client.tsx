@@ -5,6 +5,7 @@ import { Resource, CategoryFilter } from "@/lib/types";
 import { SearchBar } from "./search-bar";
 import { CategoryPills } from "./category-pills";
 import { ResourceList } from "./resource-list";
+import { ThemeToggle } from "./theme-toggle";
 
 interface HomeClientProps {
   initialResources: Resource[];
@@ -86,11 +87,12 @@ export function HomeClient({ initialResources }: HomeClientProps) {
   return (
     <div className="w-full">
       {/* Header - wider container */}
-      <header className="px-6 pt-header-top pb-6">
+      <header className="px-6 pt-header-top pb-6 flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           <span className="text-xl font-medium tracking-[-0.02em] text-primary">vibestack</span>
           <span className="w-2 h-2 rounded-full bg-accent-green" />
         </div>
+        <ThemeToggle />
       </header>
 
       {/* Main content - narrower, centered */}

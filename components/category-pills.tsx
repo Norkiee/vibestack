@@ -17,9 +17,10 @@ export function CategoryPills({ activeCategory, onCategoryChange }: CategoryPill
           onClick={() => onCategoryChange(category.id)}
           className={`px-3 py-1.5 text-[13px] rounded-full transition-colors ${
             activeCategory === category.id
-              ? "bg-primary text-white font-medium"
-              : "bg-bg-pill text-secondary hover:bg-border-light"
+              ? "bg-white text-black font-medium shadow-sm"
+              : "text-secondary hover:bg-border-light"
           }`}
+          style={activeCategory !== category.id ? { background: 'var(--bg-pill)' } : undefined}
         >
           {category.label}
         </button>

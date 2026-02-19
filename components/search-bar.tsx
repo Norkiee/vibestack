@@ -17,10 +17,11 @@ function SearchIcon() {
       height="16"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#888888"
+      stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="text-muted"
     >
       <circle cx="11" cy="11" r="8" />
       <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -48,7 +49,7 @@ export function SearchBar({ onSearch, onClear, isSearching, searchQuery }: Searc
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-md px-4 z-50">
       <form onSubmit={handleSubmit}>
-        <div className="relative flex items-center bg-white/50 backdrop-blur-xl border border-[#f5f5f5] rounded-full shadow-lg shadow-black/5">
+        <div className="relative flex items-center bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-[#f5f5f5] dark:border-white/10 rounded-full shadow-lg shadow-black/5 dark:shadow-black/20">
           <span className="pl-4 flex items-center">
             <SearchIcon />
           </span>
