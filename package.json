@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:og": "npx tsx scripts/seed-og.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.77.0",
+    "@supabase/supabase-js": "^2.97.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
